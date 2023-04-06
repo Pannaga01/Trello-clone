@@ -1,0 +1,6 @@
+<div class="task" *ngIf="task">
+  {{ task.taskName }}- {{ task.deadline | date : 'dd/MM/yyyy' }}
+
+  <button (click)="onDelete()">delete</button>
+  <fa-icon class= "editFaIcon" [icon]="faPen" (click)="onEdit()"></fa-icon>
+</div>

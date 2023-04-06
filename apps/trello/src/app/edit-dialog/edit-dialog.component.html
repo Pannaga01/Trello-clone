@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>Edit task</h1>
+<div mat-dialog-content>
+  <ol>
+    <li>
+      <mat-form-field>
+        <mat-label>Edit task</mat-label>
+        <input matInput [(ngModel)]="data.task.taskName" />
+      </mat-form-field>
+    </li>
+    <li>
+      <mat-form-field>
+        <mat-label>change deadline</mat-label>
+        <input matInput [(ngModel)]="data.task.deadline" />
+      </mat-form-field>
+    </li>
+  </ol>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="data.task" cdkFocusInitial>Ok</button>
+</div>

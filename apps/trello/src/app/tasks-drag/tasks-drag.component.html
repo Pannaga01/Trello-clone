@@ -1,0 +1,45 @@
+<div clas="parent-grid">
+
+    <div class="containers" cdkDropListGroup>
+        <div class="container">
+            <div class="card-title">New Task</div>
+    
+            <div
+              class="example-list"
+              cdkDropList
+              #newTaskList = "cdkDropList"
+              [cdkDropListData]="new_tasks"
+              (cdkDropListDropped)="drop($event)" 
+            >
+              <div *ngFor="let task of new_tasks" cdkDrag>
+                <!-- <angular-nx-task-item
+                  *ngIf="task"
+                  [task]="task"
+                ></angular-nx-task-item> -->
+              {{task.taskName}}
+              </div>
+              <div style="opacity: 0; height:10px" *ngIf="new_tasks.length === 0"></div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="card-title">On Going</div>
+    
+            <div
+              class="example-list"
+              cdkDropList
+              #onGoingList = "cdkDropList"
+              [cdkDropListData]="on_going"
+              (cdkDropListDropped)="drop($event)" 
+            >
+              <div *ngFor="let task of on_going" cdkDrag>
+                <!-- <angular-nx-task-item
+                  *ngIf="task"
+                  [task]="task"
+                ></angular-nx-task-item> -->
+                {{task.taskName}}
+              </div>
+              <div style="opacity: 0; height:10px" *ngIf="on_going.length === 0"></div>
+            </div>
+        </div>
+    </div>
+  </div>

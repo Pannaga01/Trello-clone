@@ -1,0 +1,55 @@
+<div clas="parent-grid">
+  <div class="add-list">
+    <form (ngSubmit)="onAddList()">
+      <label for="listName"> Add a list:</label>
+      <input type="text" name="listTitle" [(ngModel)]="listTitle" />
+      <button class="add-list-btn" type="submit">Add</button>
+    </form>
+  </div>
+  <div class="containers">
+    <div *ngFor="let list of lists">
+      <div class="container">
+        <div class="card-title">{{ list.title }}</div>
+
+        <form ngSubmit>
+          <input type="text" name="taskName" #taskAdd />
+          <button
+            class="add-task-btn"
+            type="submit"
+            (click)="onAddTask(taskAdd.value, list.title)"
+          >
+            +
+          </button>
+        </form>
+
+        <div
+          class="example-list"
+          cdkDropList
+          id = "{{list.title}}"
+          #id = "cdkDropList"
+          [cdkDropListData]="list.tasks"
+          [cdkDropListConnectedTo] = "connected(list.title)"
+          (cdkDropListDropped)="drop($event)" 
+        >
+          <div *ngFor="let task of list.tasks">
+            <angular-nx-task-item
+              *ngIf="task"
+              [task]="task"
+              (onDeleteTask)="deleteTask(task, list.title)"
+              (onEditTask)="editTask($event, list.title)"
+              cdkDrag
+              [cdkDragData] = "task"
+            ></angular-nx-task-item>
+          </div>
+          <div style="opacity: 0; height:10px" *ngIf="list.tasks.length === 0"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- "
+    [cdkDropListData]="list.tasks"
+    (cdkDropListDropped)="drop($event)"
+    [cdkDropListConnectedTo] = "connected(list.title)"
+    (addDeleteDoneTask)="addDoneTask(task)" -->

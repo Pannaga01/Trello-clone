@@ -1,0 +1,19 @@
+.containers{
+    display: flex;
+    flex-direction: row;  
+    justify-content: space-between;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.container{
+    min-width: 300px;
+    max-width: 800px;
+    margin: 30px auto;
+    overflow: auto;
+    min-height: 300px;
+    border: 1px solid rgb(2, 10, 16);
+    padding: 30px;
+    border-radius: 2px;
+    
+}
